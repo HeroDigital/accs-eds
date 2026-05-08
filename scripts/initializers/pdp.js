@@ -10,6 +10,7 @@ import {
   getProductSku,
   IS_UE,
   loadErrorPage,
+  isProductTemplate,
   preloadFile,
 } from '../commerce.js';
 import { getMetadata } from '../aem.js';
@@ -84,7 +85,7 @@ await initializeDropin(async () => {
   const optionsUIDs = getOptionsUIDsFromUrl();
 
   // If we cannot find a sku, and we are not in UE, there's a problem.
-  if (!sku && !IS_UE) {
+  if (!sku && !IS_UE && !isProductTemplate()) {
     return loadErrorPage();
   }
 
