@@ -62,8 +62,6 @@ export const PRODUCT_TEMPLATE_PATHS = [
   'products/default',
 ];
 
-export const CATEGORY_TEMPLATE_PATH = 'categories/default';
-
 // PATHS
 export const SUPPORT_PATH = '/support';
 export const PRIVACY_POLICY_PATH = '/privacy-policy';
@@ -259,19 +257,6 @@ export async function fetchIndex(indexFile, pageSize = 500) {
  * Loads commerce-specific eager content
  */
 export async function loadCommerceEager() {
-  // --- Dynamic category page routing ---
-  // If EDS has no content for this URL, serve the category template
-  const mainHasContent = document.querySelector('main .section');
-
-  if (!mainHasContent && isDynamicCategoryPage()) {
-    const loaded = await loadPageTemplate(CATEGORY_TEMPLATE_PATH);
-    if (!loaded) {
-      await loadErrorPage(404);
-      return;
-    }
-  }
-  // --- End dynamic routing ---
-
   const pageType = detectPageType();
   initializeAdobeDataLayer(pageType);
   await handleCommercePageType(pageType);
@@ -678,38 +663,6 @@ export function isProductTemplate() {
     const fullPath = root ? `${root}${templatePath}` : templatePath;
     return pathname === fullPath || pathname === fullPath.replace(/\/$/, '');
   });
-}
-
-export async function loadPageTemplate(templatePath) {
-  const root = getRootPath();
-  const fullPath = `${root}${templatePath}.plain.html`;
-  try {
-    const response = await fetch(fullPath);
-    if (!response.ok) return false;
-    const html = await response.text();
-    const main = document.querySelector('main');
-    if (!main) return false;
-    main.innerHTML = html;
-    return true;
-  } catch {
-    return false;
-  }
-}
-
-export function isDynamicCategoryPage() {
-  const { pathname } = window.location;
-  const root = getRootPath();
-  const categoriesBase = `${root}categories/`;
-  return pathname.startsWith(categoriesBase)
-    && pathname !== `${categoriesBase}default`
-    && pathname !== `${categoriesBase}default/`;
-}
-
-export function isCategoryTemplate() {
-  const root = getRootPath();
-  const { pathname } = window.location;
-  const fullPath = `${root}${CATEGORY_TEMPLATE_PATH}`;
-  return pathname === fullPath || pathname === `${fullPath}/`;
 }
 
 export function getProductLink(urlKey, sku) {

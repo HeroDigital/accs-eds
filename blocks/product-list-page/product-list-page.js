@@ -29,11 +29,6 @@ export default async function decorate(block) {
   const config = readBlockConfig(block);
   const pageSize = parseInt(config.pagesize, 10) || 9;
 
-  if (!config.urlpath && window.location.pathname.startsWith('/categories/')) {
-    const segments = window.location.pathname.split('/').filter(Boolean);
-    config.urlpath = segments.slice(1).join('/');
-  }
-
   const fragment = document.createRange().createContextualFragment(`
     <div class="search__wrapper">
       <div class="search__result-info"></div>
