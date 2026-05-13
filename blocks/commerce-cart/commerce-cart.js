@@ -190,7 +190,7 @@ export default async function decorate(block) {
 
           tryRenderAemAssetsImage(ctx, {
             alias: item.sku,
-            imageProps: defaultImageProps,
+            imageProps: { ...defaultImageProps, params: {} },
             wrapper: anchorWrapper,
 
             params: {
@@ -332,7 +332,7 @@ function swatchImageSlot(ctx) {
   const { imageSwatchContext, defaultImageProps } = ctx;
   tryRenderAemAssetsImage(ctx, {
     alias: imageSwatchContext.label,
-    imageProps: defaultImageProps,
+    imageProps: { ...defaultImageProps, params: {} },
     wrapper: document.createElement('span'),
 
     params: {

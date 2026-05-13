@@ -151,10 +151,9 @@ export default async function decorate(block) {
           const { product, defaultImageProps } = ctx;
           const anchorWrapper = document.createElement('a');
           anchorWrapper.href = getProductLink(product.urlKey, product.sku);
-
           tryRenderAemAssetsImage(ctx, {
             alias: product.sku,
-            imageProps: defaultImageProps,
+            imageProps: { ...defaultImageProps, params: {} },
             wrapper: anchorWrapper,
             params: {
               width: defaultImageProps.width,

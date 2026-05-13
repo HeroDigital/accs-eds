@@ -242,7 +242,7 @@ export default async function decorate(block) {
 
               tryRenderAemAssetsImage(ctx, {
                 alias: item.sku,
-                imageProps: defaultImageProps,
+                imageProps: { ...defaultImageProps, params: {} },
                 wrapper,
 
                 params: {
