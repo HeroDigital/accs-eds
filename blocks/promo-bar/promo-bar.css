@@ -1,0 +1,46 @@
+.promo-bar-wrapper {
+    background: #111;
+    color: #fff;
+    font-size: 1.5rem;
+    line-height: 1.4;
+    text-align: center;
+    padding: 5px 16px;
+}
+
+/* The body is a CSS grid (auto / 1fr / auto for header / main / footer).
+   When the promo bar is present, reserve a row above the header for it. */
+body:has(> .promo-bar-wrapper) {
+    grid-template-rows: auto auto 1fr auto;
+}
+
+body:has(> .promo-bar-wrapper) > .promo-bar-wrapper { grid-row: 1; }
+body:has(> .promo-bar-wrapper) > header             { grid-row: 2; }
+body:has(> .promo-bar-wrapper) > main               { grid-row: 3; }
+body:has(> .promo-bar-wrapper) > footer             { grid-row: 4; }
+
+.promo-bar-wrapper a,
+.promo-bar-wrapper .promo-bar__link {
+    color: inherit;
+    text-decoration: underline;
+}
+
+.promo-bar-wrapper .promo-bar__link {
+    display: block;
+}
+
+.promo-bar-wrapper .promo-bar__content,
+.promo-bar-wrapper > div {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.promo-bar-wrapper p {
+    margin: 0;
+}
+
+@media (min-width: 600px) {
+    .promo-bar-wrapper {
+        font-size: 1.5rem;
+        padding: 5px;
+    }
+}

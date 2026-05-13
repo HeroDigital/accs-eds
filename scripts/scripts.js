@@ -21,6 +21,23 @@ import {
   IS_UE,
   IS_DA,
 } from './commerce.js';
+/**
+ * Loads the authored /promo-bar fragment and inserts it before <header>.
+ * Silent if the fragment doesn't exist (loadFragment returns null on 404).
+ */
+async function loadPromoBar(doc) {
+  const header = doc.querySelector('header');
+  if (!header) return;
+  // eslint-disable-next-line import/no-cycle
+  const { loadFragment } = await import('../blocks/fragment/fragment.js');
+  const fragment = await loadFragment('/promo-bar');
+  if (!fragment) return;
+  loadCSS(`${window.hlx.codeBasePath}/blocks/promo-bar/promo-bar.css`);
+  const bar = document.createElement('aside');
+  bar.classList.add('promo-bar-wrapper');
+  bar.append(...fragment.childNodes);
+  header.before(bar);
+}
 
 /**
  * Builds hero block and prepends to main in a new section.
@@ -173,6 +190,7 @@ async function loadEager(doc) {
  * @param {Element} doc The container element
  */
 async function loadLazy(doc) {
+  loadPromoBar(doc);
   loadHeader(doc.querySelector('header'));
 
   const main = doc.querySelector('main');
