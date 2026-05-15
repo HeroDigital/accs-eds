@@ -547,7 +547,7 @@ function imageSlotConfig(ctx) {
   const { data, defaultImageProps } = ctx;
   return {
     alias: data.sku,
-    imageProps: defaultImageProps,
+    imageProps: { ...defaultImageProps, params: {} },
 
     params: {
       width: defaultImageProps.width,
