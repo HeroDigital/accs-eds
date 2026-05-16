@@ -5,17 +5,12 @@
       "headers": {
         "all": {
           "Store": "default"
-        },
-        "cs": {
-          "Magento-Store-Code": "main_website_store",
-          "Magento-Store-View-Code": "default",
-          "Magento-Website-Code": "base"
         }
       },
       "commerce-b2b-enabled": true,
       "commerce-companies-enabled": true,
       "commerce-assets-enabled": true,
-      "adobe-commerce-optimizer": false,
+      "adobe-commerce-optimizer": true,
       "analytics": {
         "base-currency-code": "USD",
         "environment": "Testing",
