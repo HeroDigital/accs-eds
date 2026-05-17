@@ -1,10 +1,15 @@
 {
   "public": {
     "default": {
-      "commerce-endpoint": "https://na1-sandbox.api.commerce.adobe.com/Ss23K9eQcr9huwBhVR3JDF/graphql",
+      "commerce-endpoint": "https://na1-sandbox.api.commerce.adobe.com/Wac24jVBG5a5tyShwZnB8c/graphql",
+      "commerce-core-endpoint": "https://na1-sandbox.api.commerce.adobe.com/Ss23K9eQcr9huwBhVR3JDF/graphql",
       "headers": {
         "all": {
           "Store": "default"
+        },
+        "cs": {
+          "ac-view-id": "efe83335-ff87-42fc-b688-8dd9642a05ca",
+          "ac-price-book-id": "west_coast_inc"
         }
       },
       "commerce-b2b-enabled": true,
