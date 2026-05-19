@@ -1,21 +1,19 @@
 {
   "public": {
     "default": {
-      "commerce-endpoint": "https://na1-sandbox.api.commerce.adobe.com/Wac24jVBG5a5tyShwZnB8c/graphql",
-      "adobe-commerce-optimizer": true,
+      "commerce-endpoint": "https://na1-sandbox.api.commerce.adobe.com/Ss23K9eQcr9huwBhVR3JDF/graphql",
+      "commerce-core-endpoint": "https://na1-sandbox.api.commerce.adobe.com/Ss23K9eQcr9huwBhVR3JDF/graphql",
+      "adobe-commerce-optimizer": false,
       "headers": {
         "all": {
           "Store": "default"
         },
         "cs": {
-          "ac-view-id": "efe83335-ff87-42fc-b688-8dd9642a05ca",
-          "ac-price-book-id": "west_coast_inc",
-          "ac-source-locale": "en-US"
+          "Magento-Store-Code": "main_website_store",
+          "Magento-Store-View-Code": "default",
+          "Magento-Website-Code": "base"
         }
       },
-      "commerce-b2b-enabled": true,
-      "commerce-companies-enabled": true,
-      "commerce-assets-enabled": true,
       "analytics": {
         "base-currency-code": "USD",
         "environment": "Testing",
